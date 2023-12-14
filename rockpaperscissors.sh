@@ -36,11 +36,14 @@ ties=0
 while [[ 1 ]]
 do
     game_menu $wins $losses $ties
-    read player_choice
+    read pc
+
+    player_choice=${pc^^}
 
     if [[ $player_choice == "Q" ]]
     then
-        echo "Thanks for playing!"
+        clear
+        echo -e "\e[32mThanks for playing!\e[0m"
         break
     elif [[ $player_choice == "R" || $player_choice == "P" || $player_choice == "S" ]]
     then
