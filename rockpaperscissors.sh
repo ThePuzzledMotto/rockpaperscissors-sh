@@ -1,12 +1,12 @@
 function game_menu() {
     clear
-    echo "
-Rock, Paper, Scissors, by Nicolas Marzagão
+    echo -e "
+\e[36mRock, Paper, Scissors, by Nicolas Marzagão\e[0m
 - Rock beats scissors.
 - Paper beats rocks.
 - Scissors beats paper.
 
-${1} Wins, ${2} Losses, ${3} Ties
+\e[32m${1}\e[0m Wins, \e[31m${2}\e[0m Losses, \e[33m${3}\e[0m Ties
 Enter your move: (R)ock (P)aper (S)cissors or (Q)uit
 "
 }
@@ -46,22 +46,29 @@ do
     then
         computer_choice=$(get_computer_choice)
 
-        echo "Your choice: $player_choice"
-        echo "Computer's choice: $computer_choice"
+        clear
+        echo "Rock"
+        sleep 0.5
+        echo "Paper"
+        sleep 0.5
+        echo "Scissors"
+        sleep 0.5
+        echo "Shoot!"
+        echo ""
 
         case $player_choice in
             "R")
                 case $computer_choice in
                     "P")
-                        echo "You Lose!"
+                        echo -e "\e[31mYou Lose!\e[0m"
                         ((losses++))
                     ;;
                     "S")
-                        echo "You Win!"
+                        echo -e "\e[32mYou Win!\e[0m"
                         ((wins++))
                     ;;
                     *)
-                        echo "It's a Tie!"
+                        echo -e "\e[33mIt's a Tie!\e[0m"
                         ((ties++))
                     ;;
                 esac
@@ -69,15 +76,15 @@ do
             "P")
                 case $computer_choice in
                     "S")
-                        echo "You Lose!"
+                        echo -e "\e[31mYou Lose!\e[0m"
                         ((losses++))
                     ;;
                     "R")
-                        echo "You Win!"
+                        echo -e "\e[32mYou Win!\e[0m"
                         ((wins++))
                     ;;
                     *)
-                        echo "It's a Tie!"
+                        echo -e "\e[33mIt's a Tie!\e[0m"
                         ((ties++))
                     ;;
                 esac
@@ -85,15 +92,15 @@ do
             *)
                 case $computer_choice in
                     "R")
-                        echo "You Lose!"
+                        echo -e "\e[31mYou Lose!\e[0m"
                         ((losses++))
                     ;;
                     "P")
-                        echo "You Win!"
+                        echo -e "\e[32mYou Win!\e[0m"
                         ((wins++))
                     ;;
                     *)
-                        echo "It's a Tie!"
+                        echo -e "\e[33mIt's a Tie!\e[0m"
                         ((ties++))
                     ;;
                 esac
@@ -103,7 +110,7 @@ do
         echo "Press Enter to Continue"
         read continue
     else
-        echo "Invalid Input!"
+        echo -e "\e[31mInvalid Input!\e[0m"
         echo "Press Enter to Continue"
         read continue
     fi
